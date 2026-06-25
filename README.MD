@@ -1,61 +1,111 @@
-# ETL Pipeline Project
-This project is an ETL (Extract, Transform, Load) pipeline built using Python. It is designed to scrape data from a fictional fashion retail website, clean and transform it, and then store it in multiple formats and destinations.
+🚀 ETL Pipeline Project (Python Data Engineering)
 
-## 🔧 Features
-- **Extract**
+A production-style ETL (Extract, Transform, Load) pipeline built using Python that scrapes fashion product data, cleans and transforms it, and loads it into multiple destinations for analytics and reporting.
 
-Scrapes data from: https://fashion-studio.dicoding.dev/
+📌 Project Overview
 
-- **Transform**
-1. Handles missing and duplicate values
-2. Converts prices into a standardized format
-3. Ensures all columns are in the correct data types
+This project demonstrates a complete end-to-end Data Engineering ETL pipeline:
 
-- **Load**
+Extracts fashion product data from a web source
+Cleans and transforms raw, messy data into structured format
+Loads processed data into multiple storage systems
 
-Saves the clean, transformed dataset into:
+It simulates real-world data pipeline workflows used in analytics and BI systems.
 
-1. CSV file
-2. Google Spreadsheet (via Google Sheets API)
-3. Local PostgreSQL database
+⚙️ Tech Stack
+Python 🐍
+Pandas 📊
+BeautifulSoup 🌐
+Requests
+SQLAlchemy
+PostgreSQL 🐘
+Google Sheets API
+dotenv
+🔄 ETL Workflow
+1️⃣ Extract (Data Collection)
 
-**Testing**
-Includes test cases using `pytest` to ensure data integrity and pipeline reliability
+Scrapes product data from:
 
-## 🚀 How to Replicate and Run the Project
-### 1. Clone the repository
-```git clone https://github.com/roissyahf/simple-etl-pipeline.git```
+https://fashion-studio.dicoding.dev/
+Extracted fields:
+Product Title
+Price
+Rating
+Colors
+Size
+Gender
+Timestamp
+2️⃣ Transform (Data Cleaning & Processing)
+Remove invalid records:
+Unknown Product
+Invalid ratings
+Unavailable prices
+Remove duplicates and null values
+Convert data types properly:
+Price → float (standardized)
+Rating → numeric
+Colors → integer
+Normalize structured dataset using Pandas
+3️⃣ Load (Data Storage)
 
-### 2. Set up virtual environment
-```
+Cleaned data is stored in:
+
+📁 CSV file (fashion_product.csv)
+📊 Google Sheets (via API integration)
+🐘 PostgreSQL database
+📂 Project Structure
+.
+├── main.py
+├── requirements.txt
+├── utils/
+│   ├── extract.py
+│   ├── transform.py
+│   └── load.py
+├── tests/
+├── fashion_product.csv
+└── README.md
+🚀 How to Run This Project
+1. Clone Repository
+git clone https://github.com/vishalchavare/fashion-etl-pipeline.git
+cd fashion-etl-pipeline
+2. Create Virtual Environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+venv\Scripts\activate   # Windows
+3. Install Dependencies
+pip install -r requirements.txt
+4. Configure Environment Variables
 
-### 3. Install Dependency
-```pip install -r requirements.txt```
+Create .env file:
 
-### 4. Set up environment variable using dotenv
-Ensure you have installed `python-dotenv`, then fill in the necessary keys
-```
-SPREADSHEET_ID=your_spreadsheet_id
+SPREADSHEET_ID=your_google_sheet_id
 DATABASE_URL=postgresql://username:password@localhost:5432/dbname
-```
+5. Run ETL Pipeline
+python main.py
+6. Run Tests
+pytest tests/ -v
+📊 Output
 
-### 5. Run ETL script
-```python main.py```
+After successful execution:
 
-### 6. Run unit test in the tests folder
-```pytest tests/ -v```
+Clean dataset saved in CSV
+Data pushed to Google Sheets
+Data stored in PostgreSQL database
+Fully tested ETL pipeline (pytest coverage included)
+💡 Key Learnings
+Web scraping using BeautifulSoup
+Data cleaning & preprocessing with Pandas
+ETL pipeline design
+Database integration using SQLAlchemy
+Google Sheets API automation
+Real-world data engineering workflow
+🏆 Highlights
+Production-style ETL architecture
+Multi-destination data loading
+Clean modular Python code
+Test-driven development (pytest)
+Real-world data pipeline simulation
+📌 Author
 
-### 7. Run test coverage in the tests folder
-```pytest tests/ --cov=tests --cov-report=term-missing```
-
-## 📁 Output
-- Data stored in fashion_product.csv
-- Data stored in Google Spreadsheet
-- Data loaded into local PostgreSQL database
-
-After testing with `pytest`, the code built covers 97% coverage
-
-![Image](https://github.com/user-attachments/assets/7ded3119-5243-4671-a7c7-d930e343b59e)
+Vishal Chavare
+📍 Pune, India
+🔗 GitHub: https://github.com/vishalchavare
